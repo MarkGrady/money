@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.money.mapper.ProductMapper">
+    <resultMap id="productMap" type="com.qf.money.pojo.Product">
+        <id column="id" property="id"></id>
+        <result column="#" property="#"></result>
+        <result column="pw" property="pw"></result>
+        <result column="imgurl" property="imgurl"></result>
+    </resultMap>
+
+    <sql id="productColumns">${alias}.id,${alias}.name,${alias}.pw,${alias}.imgurl</sql>
+
+    <!---->
+
+    <insert id="add">
+        insert into user(id,name,pw,imgurl) values (#{id},#{name},#{pw},#{imgurl})
+    </insert>
+
+    <!-- <select id="select" resultMap="userMap">
+         select
+         <include refid="userColumns"><property name="alias" value="u1"/></include>
+         from user u1 where u1.id=#{id}
+     </select>-->
+
+    <select id="search" resultMap="userMap">
+        select
+        <include refid="userColumns"><property name="alias" value="u1"/></include>
+        from user u1
+    </select>
+
+    <!--<select id="research" resultMap="userMap">
+        select
+        <include refid="userColumns"><property name="alias" value="u1"/></include>
+        from t_user u1 where username like "%"#{username}"%"
+    </select>-->
+
+    <delete id="del">
+        delete from user where id=#{id}
+    </delete>
+
+    <update id="update">
+        update user set name=#{name},pw=#{pw},imgurl=#{imgurl} where id=#{id}
+    </update>
+</mapper>
