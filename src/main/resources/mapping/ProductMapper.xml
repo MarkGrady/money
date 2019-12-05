@@ -21,6 +21,10 @@
     </select>
 
     <select id="findProductById" resultMap="productMap">
-
+      select
+        <include refid="productColumns"><property name="alias" value="pro"></property></include>
+        from
+        product pro
+        where product_id=#{productId }
     </select>
 </mapper>
