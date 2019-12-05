@@ -4,43 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qf.money.mapper.ProductMapper">
     <resultMap id="productMap" type="com.qf.money.pojo.Product">
-        <id column="id" property="id"></id>
-        <result column="#" property="#"></result>
-        <result column="pw" property="pw"></result>
-        <result column="imgurl" property="imgurl"></result>
+        <id column="product_id" property="productId"></id>
+        <result column="product_name" property="productName"></result>
+        <result column="product_rate" property="productRate"></result>
+        <result column="product_date" property="productDate"></result>
+        <result column="product_img" property="productImg"></result>
     </resultMap>
 
-    <sql id="productColumns">${alias}.id,${alias}.name,${alias}.pw,${alias}.imgurl</sql>
+    <sql id="productColumns">${alias}.product_id,${alias}.product_name,${alias}.product_rate,${alias}.product_date,${alias}.product_img</sql>
 
-    <!---->
-
-    <insert id="add">
-        insert into user(id,name,pw,imgurl) values (#{id},#{name},#{pw},#{imgurl})
-    </insert>
-
-    <!-- <select id="select" resultMap="userMap">
-         select
-         <include refid="userColumns"><property name="alias" value="u1"/></include>
-         from user u1 where u1.id=#{id}
-     </select>-->
-
-    <select id="search" resultMap="userMap">
+    <select id="findAll" resultMap="productMap">
         select
-        <include refid="userColumns"><property name="alias" value="u1"/></include>
-        from user u1
+        <include refid="productColumns"><property name="alias" value="pro"></property></include>
+        from
+        product pro
     </select>
 
-    <!--<select id="research" resultMap="userMap">
-        select
-        <include refid="userColumns"><property name="alias" value="u1"/></include>
-        from t_user u1 where username like "%"#{username}"%"
-    </select>-->
+    <select id="findProductById" resultMap="productMap">
 
-    <delete id="del">
-        delete from user where id=#{id}
-    </delete>
-
-    <update id="update">
-        update user set name=#{name},pw=#{pw},imgurl=#{imgurl} where id=#{id}
-    </update>
+    </select>
 </mapper>
