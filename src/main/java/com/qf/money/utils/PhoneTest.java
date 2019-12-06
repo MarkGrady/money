@@ -1,5 +1,6 @@
 package com.qf.money.utils;
 
+
 import com.zhenzi.sms.ZhenziSmsClient;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +25,7 @@ public class PhoneTest {
             //将验证码通过榛子云接口 发送到手机
             ZhenziSmsClient client = new ZhenziSmsClient(apiUrl, appId, appSecret);
             //发往的手机号
-            String tel = "8392154617";
+            String tel = "18229011486";
             //发送的信息内容
             String result = client.send(tel, "您的验证码为", smsCode + "你正在注册新用户感谢您的支持" + "验证码在五分之内有效");
             //打印日志输出
